@@ -35,11 +35,11 @@
 
 <div align="center">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="100%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Ziuziuk-Denys&theme=tokyonight" width="100%"/>
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="32%"/>
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="32%"/>
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Ziuziuk-Denys&theme=tokyonight" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Ziuziuk-Denys&theme=tokyonight" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Ziuziuk-Denys&theme=tokyonight" width="32%"/>
 
 </div>
 
