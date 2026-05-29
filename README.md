@@ -35,11 +35,11 @@
 
 <div align="center">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Ziuziuk-Denys&theme=github_dark" width="100%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="100%"/>
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Ziuziuk-Denys&theme=github_dark" width="32%"/>
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Ziuziuk-Denys&theme=github_dark" width="32%"/>
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Ziuziuk-Denys&theme=github_dark" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Ziuziuk-Denys&theme=github_dark&title_color=f0ead6&text_color=9a8f7e" width="32%"/>
 
 </div>
 
@@ -100,7 +100,7 @@
 
 <br/><br/>
 
-<sub><sup>designed with intention &nbsp;·&nbsp; <a href="https://evel.one">evel.one</a> &nbsp;·&nbsp; Solihull, UK</sup></sub>
+<p style="font-size:15px;">designed with intention &nbsp;·&nbsp; <a href="https://evel.one">evel.one</a> &nbsp;·&nbsp; UK</p>
 
 </div>
 
