@@ -6,7 +6,7 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Lora&weight=300&size=16&duration=3000&pause=1500&color=9a8f7e&center=true&vCenter=true&width=520&lines=Building+systems+that+outlast+trends.;Node.js+%C2%B7+Rust+%C2%B7+React+%C2%B7+Docker+%C2%B7+C%2B%2B;Open+to+work+%E2%80%94+Solihull%2C+UK+%E2%86%92+Remote.;Learning+in+public.+Growing+every+day." />
+<img src="https://readme-typing-svg.demolab.com?font=Lora&weight=300&size=16&duration=3000&pause=1500&color=9a8f7e&center=true&vCenter=true&width=520&lines=Building+systems+that+outlast+trends.;Node.js+%C2%B7+Rust+%C2%B7+React+%C2%B7+Docker+%C2%B7+C%2B%2B;Open+to+work+%E2%80%94+%2C+UK+%E2%86%92+Remote.;Learning+in+public.+Growing+every+day." />
 
 <br/>
 
