@@ -1,43 +1,58 @@
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,50:0d0d0d,100:000000&height=200&section=header&text=Denys%20Ziuziuk&fontSize=52&fontColor=ffffff&fontAlignY=45&animation=fadeIn&desc=Architect%20%C2%B7%20Engineer%20%C2%B7%20Builder&descSize=14&descAlignY=68&descAlign=50" width="100%"/>
-</div>
+
+<!-- Smooth animated header -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a0a,50:161616,100:0a0a0a&height=180&section=header&text=Denys%20Ziuziuk&fontSize=48&fontColor=ffffff&fontAlignY=40&animation=fadeIn&desc=Backend%20Engineer%20%E2%80%A2%20Distributed%20Systems%20%E2%80%A2%20Clean%20Architecture&descSize=14&descAlignY=62&descColor=666666" width="100%"/>
 
 <br/>
 
-<div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Courier+Prime&weight=400&size=13&duration=4000&pause=2000&color=555555&center=true&vCenter=true&width=500&lines=Building+systems+that+outlast+trends.;Zero+compromise+on+performance.;Currently+learning+%E2%80%94+always+building." alt="typing" />
-</div>
+<!-- Typing animation — cycles through identity -->
+<img src="https://readme-typing-svg.demolab.com?font=Syne&weight=300&size=18&duration=3500&pause=1500&color=AAAAAA&center=true&vCenter=true&width=520&height=40&lines=Building+systems+that+outlast+trends.;Open+to+work+%E2%80%94+based+in+Solihull%2C+UK.;Learning+in+public.+Growing+every+day.;Node.js+%C2%B7+React+%C2%B7+Rust+%C2%B7+Docker." />
 
 <br/><br/>
+
+<!-- Pill badges — clean, consistent -->
+<a href="https://evel.one"><img src="https://img.shields.io/badge/evel.one-%E2%86%97-111111?style=for-the-badge&labelColor=111111&color=222222&logoColor=white" /></a>
+&nbsp;
+<a href="mailto:denys.ziuziuk.w@gmail.com"><img src="https://img.shields.io/badge/contact-%E2%86%97-111111?style=for-the-badge&labelColor=111111&color=222222" /></a>
+&nbsp;
+<img src="https://img.shields.io/badge/%F0%9F%9F%A2%20open%20to%20work-111111?style=for-the-badge&labelColor=111111&color=1a3a1a" />
+&nbsp;
+<img src="https://komarev.com/ghpvc/?username=Ziuziuk-Denys&style=for-the-badge&color=111111&labelColor=111111&label=visitors" />
+
+</div>
+
+<br/>
 
 ---
 
 <br/>
 
-<table align="center" border="0" cellpadding="0" cellspacing="0">
+<!-- About — two column, monospace, breathing room -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td align="left" width="50%" valign="top">
+<td width="55%" valign="top">
 
-```
-I build backend engines,
-distributed systems, and
-interfaces worth remembering.
+```typescript
+const Denys = {
+  alias     : "Evely",
+  location  : "Solihull, UK → Remote",
+  status    : "Open to internships & work",
 
-Currently: early-stage.
-Direction: clear.
+  building  : [
+    "Backend engines",
+    "Distributed systems",
+    "Pixel-perfect frontends",
+  ],
+
+  learning  : "Node.js · Express · React · Vite",
+  principle : "Zero compromise on performance.",
+};
 ```
 
 </td>
-<td align="right" width="50%" valign="top">
+<td width="45%" valign="middle" align="center">
 
-```
-Node.js · Express · React
-Rust · Python · C / C++
-Docker · Linux · Vite
-
-Open to work.
-Solihull, UK → Remote.
-```
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ziuziuk-Denys&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=888888&langs_count=6" width="100%" />
 
 </td>
 </tr>
@@ -49,87 +64,90 @@ Solihull, UK → Remote.
 
 <br/>
 
-## Stats
-
-<br/>
+## ⚡ GitHub Stats
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=Ziuziuk-Denys&show_icons=true&theme=github_dark&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=666666&icon_color=ffffff&ring_color=ffffff&include_all_commits=true&count_private=true&hide=prs,issues" height="165" alt="stats"/>
-&nbsp;&nbsp;&nbsp;
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ziuziuk-Denys&layout=compact&theme=github_dark&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=666666&langs_count=6" height="165" alt="langs"/>
-
-</div>
-
-<br/>
-
-<div align="center">
-<img src="https://streak-stats.demolab.com?user=Ziuziuk-Denys&theme=github-dark-blue&hide_border=true&background=00000000&stroke=222222&ring=ffffff&fire=ffffff&currStreakLabel=ffffff&sideLabels=555555&dates=444444&currStreakNum=ffffff&sideNums=aaaaaa" alt="streak" />
-</div>
-
-<br/>
-
----
-
-<br/>
-
-## Stack
-
-<br/>
-
-<div align="center">
-
-| Layer | Technologies |
-|:--|:--|
-| **Runtime** | ![Node.js](https://img.shields.io/badge/Node.js-000?style=flat-square&logo=nodedotjs&logoColor=fff) ![Express](https://img.shields.io/badge/Express-000?style=flat-square&logo=express&logoColor=fff) |
-| **Frontend** | ![React](https://img.shields.io/badge/React-000?style=flat-square&logo=react&logoColor=fff) ![Vite](https://img.shields.io/badge/Vite-000?style=flat-square&logo=vite&logoColor=fff) |
-| **Systems** | ![Rust](https://img.shields.io/badge/Rust-000?style=flat-square&logo=rust&logoColor=fff) ![C](https://img.shields.io/badge/C-000?style=flat-square&logo=c&logoColor=fff) ![C++](https://img.shields.io/badge/C++-000?style=flat-square&logo=cplusplus&logoColor=fff) |
-| **Scripting** | ![Python](https://img.shields.io/badge/Python-000?style=flat-square&logo=python&logoColor=fff) |
-| **Infra** | ![Docker](https://img.shields.io/badge/Docker-000?style=flat-square&logo=docker&logoColor=fff) ![Linux](https://img.shields.io/badge/Linux-000?style=flat-square&logo=linux&logoColor=fff) |
-| **Tooling** | ![WebStorm](https://img.shields.io/badge/WebStorm-000?style=flat-square&logo=webstorm&logoColor=fff) ![Git](https://img.shields.io/badge/Git-000?style=flat-square&logo=git&logoColor=fff) |
-
-</div>
-
-<br/>
-
----
-
-<br/>
-
-## Activity
-
-<br/>
-
-<div align="center">
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Ziuziuk-Denys&bg_color=00000000&color=555555&line=aaaaaa&point=ffffff&area=true&area_color=ffffff&hide_border=true&custom_title=%20" width="100%" alt="activity"/>
-</div>
-
-<br/>
-
----
-
-<br/>
-
-<div align="center">
-
-<a href="https://evel.one">
-  <img src="https://img.shields.io/badge/evel.one-→-000000?style=flat-square&labelColor=000000&color=111111" alt="website"/>
-</a>
+<img src="https://github-readme-stats.vercel.app/api?username=Ziuziuk-Denys&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=888888&icon_color=cccccc&ring_color=cccccc&include_all_commits=true&count_private=true&hide=prs,issues" height="170" />
 &nbsp;&nbsp;
-<a href="mailto:denys.ziuziuk.w@gmail.com">
-  <img src="https://img.shields.io/badge/denys.ziuziuk.w@gmail.com-→-000000?style=flat-square&labelColor=000000&color=111111" alt="email"/>
-</a>
+<img src="https://streak-stats.demolab.com?user=Ziuziuk-Denys&theme=github-dark-blue&hide_border=true&background=0d1117&stroke=1c2128&ring=888888&fire=cccccc&currStreakLabel=ffffff&sideLabels=888888&dates=555555&currStreakNum=ffffff&sideNums=cccccc" height="170" />
 
 </div>
 
 <br/>
 
+---
+
+<br/>
+
+## 🛠 Stack
+
 <div align="center">
-<sub><sup>— built with intention —</sup></sub>
+
+<!-- Bubble skill icons — far more visual than plain badges -->
+<img src="https://go-skill-icons.vercel.app/api/icons?i=nodejs,express,react,vite,typescript,python,rust,c,cpp,docker,linux,git,webstorm,github&theme=dark&perline=7" />
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+## 📈 Activity
+
+<div align="center">
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Ziuziuk-Denys&bg_color=0d1117&color=666666&line=888888&point=ffffff&area=true&area_color=333333&hide_border=true&custom_title=contribution+graph" width="100%" />
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+## 🏆 Trophies
+
+<div align="center">
+
+<img src="https://github-profile-trophy.vercel.app/?username=Ziuziuk-Denys&theme=onestar&no-frame=true&no-bg=true&column=7&margin-w=6" />
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+## 🐍 Contributions
+
+<div align="center">
+
+<!-- Snake eating your contributions — needs the GitHub Action setup (instructions below) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake.svg" />
+  <img alt="contribution snake" src="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg" />
+</picture>
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+<div align="center">
+<sub>designed with intention &nbsp;·&nbsp; <a href="https://evel.one">evel.one</a></sub>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:0d0d0d&height=80&section=footer" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a0a,100:161616&height=80&section=footer" width="100%"/>
 </div>
