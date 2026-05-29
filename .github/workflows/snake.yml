@@ -1,4 +1,4 @@
-name: Generate Snake Animation
+name: Snake animation
 
 on:
   schedule:
@@ -8,8 +8,6 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
     steps:
       - uses: Platane/snk/svg-only@v3
         with:
@@ -17,7 +15,6 @@ jobs:
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-
       - uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
