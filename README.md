@@ -23,21 +23,6 @@
 
 <img align="right" width="380" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ziuziuk-Denys&layout=compact&theme=dark&hide_border=true&bg_color=0d0d0d&title_color=ffffff&text_color=777777&langs_count=8&card_width=380"/>
 
-### About
-
-```ts
-const denys = {
-  alias    : "Evely",
-  location : "Solihull, UK → Remote",
-  focus    : "Backend & distributed systems",
-  stack    : ["Node.js","React","Rust","Python","C/C++"],
-  tools    : ["Docker","Linux","WebStorm","Vite","Twilio"],
-  learning : "Express · REST · clean architecture",
-  goal     : "Open to internships & junior roles",
-  website  : "https://evel.one",
-};
-```
-
 <br clear="right"/>
 
 ---
@@ -127,19 +112,7 @@ const denys = {
 
 <br/>
 
----
 
-<br/>
-
-### Trophies
-
-<div align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=Ziuziuk-Denys&theme=onestar&no-frame=true&no-bg=true&column=7&margin-w=4&margin-h=4"/>
-</div>
-
-<br/>
-
----
 
 <br/>
 
