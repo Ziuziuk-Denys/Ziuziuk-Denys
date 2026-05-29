@@ -88,34 +88,6 @@
 
 <br/>
 
-### Contribution snake
-
-> **Setup required:** create `.github/workflows/snake.yml` (see below), run the action once, and this animates automatically every day.
-
-<div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake.svg"/>
-  <img alt="github contribution snake" src="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg" width="100%"/>
-</picture>
-</div>
-
-<br/>
-
----
-
-<br/>
-
-### Trophies
-
-<div align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=Ziuziuk-Denys&theme=onestar&no-frame=true&no-bg=true&column=7&margin-w=4&margin-h=4"/>
-</div>
-
-<br/>
-
----
-
 <br/>
 
 <div align="center">
