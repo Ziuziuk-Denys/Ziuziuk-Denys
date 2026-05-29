@@ -4,22 +4,18 @@
 
 </div>
 
+<div align="center">
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=300&size=16&duration=3000&pause=1500&color=777777&center=true&vCenter=true&width=500&lines=Building+systems+that+outlast+trends.;Node.js+%C2%B7+Rust+%C2%B7+React+%C2%B7+Docker+%C2%B7+C%2B%2B;Open+to+work+%E2%80%94+Solihull%2C+UK+%E2%86%92+Remote.;Learning+in+public.+Growing+every+day." />
+
+<br/>
+
 [![Website](https://img.shields.io/badge/evel.one-%E2%86%97-000?style=flat-square&labelColor=111&color=111)](https://evel.one)
 [![Email](https://img.shields.io/badge/email-%E2%86%97-000?style=flat-square&labelColor=111&color=111)](mailto:denys.ziuziuk.w@gmail.com)
 [![Open to Work](https://img.shields.io/badge/%F0%9F%9F%A2_open_to_work-internships_%26_junior_roles-000?style=flat-square&labelColor=0a1a0a&color=0a1a0a)](https://evel.one)
 [![Views](https://komarev.com/ghpvc/?username=Ziuziuk-Denys&style=flat-square&color=111111&labelColor=111111&label=profile+views)](https://github.com/Ziuziuk-Denys)
 
 </div>
-
----
-
-<br/>
-
-<img align="right" width="380" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ziuziuk-Denys&layout=compact&theme=dark&hide_border=true&bg_color=0d0d0d&title_color=ffffff&text_color=777777&langs_count=8&card_width=380"/>
-
-<br clear="right"/>
-
----
 
 <br/>
 
@@ -106,7 +102,19 @@
 
 <br/>
 
+---
 
+<br/>
+
+### Trophies
+
+<div align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=Ziuziuk-Denys&theme=onestar&no-frame=true&no-bg=true&column=7&margin-w=4&margin-h=4"/>
+</div>
+
+<br/>
+
+---
 
 <br/>
 
