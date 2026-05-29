@@ -1,76 +1,70 @@
 <div align="center">
 
-<!-- Smooth animated header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a0a,50:161616,100:0a0a0a&height=180&section=header&text=Denys%20Ziuziuk&fontSize=48&fontColor=ffffff&fontAlignY=40&animation=fadeIn&desc=Backend%20Engineer%20%E2%80%A2%20Distributed%20Systems%20%E2%80%A2%20Clean%20Architecture&descSize=14&descAlignY=62&descColor=666666" width="100%"/>
-
-<br/>
-
-<!-- Typing animation — cycles through identity -->
-<img src="https://readme-typing-svg.demolab.com?font=Syne&weight=300&size=18&duration=3500&pause=1500&color=AAAAAA&center=true&vCenter=true&width=520&height=40&lines=Building+systems+that+outlast+trends.;Open+to+work+%E2%80%94+based+in+Solihull%2C+UK.;Learning+in+public.+Growing+every+day.;Node.js+%C2%B7+React+%C2%B7+Rust+%C2%B7+Docker." />
-
-<br/><br/>
-
-<!-- Pill badges — clean, consistent -->
-<a href="https://evel.one"><img src="https://img.shields.io/badge/evel.one-%E2%86%97-111111?style=for-the-badge&labelColor=111111&color=222222&logoColor=white" /></a>
-&nbsp;
-<a href="mailto:denys.ziuziuk.w@gmail.com"><img src="https://img.shields.io/badge/contact-%E2%86%97-111111?style=for-the-badge&labelColor=111111&color=222222" /></a>
-&nbsp;
-<img src="https://img.shields.io/badge/%F0%9F%9F%A2%20open%20to%20work-111111?style=for-the-badge&labelColor=111111&color=1a3a1a" />
-&nbsp;
-<img src="https://komarev.com/ghpvc/?username=Ziuziuk-Denys&style=for-the-badge&color=111111&labelColor=111111&label=visitors" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:111111&height=200&section=header&text=Denys%20Ziuziuk&fontSize=50&fontColor=ffffff&fontAlignY=42&animation=fadeIn&desc=Backend%20Engineer%20%E2%80%A2%20Systems%20%E2%80%A2%20Clean%20Architecture&descSize=15&descAlignY=65&descColor=555555" width="100%"/>
 
 </div>
 
+<div align="center">
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=300&size=16&duration=3000&pause=1500&color=777777&center=true&vCenter=true&width=500&lines=Building+systems+that+outlast+trends.;Node.js+%C2%B7+Rust+%C2%B7+React+%C2%B7+Docker+%C2%B7+C%2B%2B;Open+to+work+%E2%80%94+Solihull%2C+UK+%E2%86%92+Remote.;Learning+in+public.+Growing+every+day." />
+
 <br/>
+
+[![Website](https://img.shields.io/badge/evel.one-%E2%86%97-000?style=flat-square&labelColor=111&color=111)](https://evel.one)
+[![Email](https://img.shields.io/badge/email-%E2%86%97-000?style=flat-square&labelColor=111&color=111)](mailto:denys.ziuziuk.w@gmail.com)
+[![Open to Work](https://img.shields.io/badge/%F0%9F%9F%A2_open_to_work-internships_%26_junior_roles-000?style=flat-square&labelColor=0a1a0a&color=0a1a0a)](https://evel.one)
+[![Views](https://komarev.com/ghpvc/?username=Ziuziuk-Denys&style=flat-square&color=111111&labelColor=111111&label=profile+views)](https://github.com/Ziuziuk-Denys)
+
+</div>
 
 ---
 
 <br/>
 
-<!-- About — two column, monospace, breathing room -->
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="55%" valign="top">
+<img align="right" width="380" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ziuziuk-Denys&layout=compact&theme=dark&hide_border=true&bg_color=0d0d0d&title_color=ffffff&text_color=777777&langs_count=8&card_width=380"/>
 
-```typescript
-const Denys = {
-  alias     : "Evely",
-  location  : "Solihull, UK → Remote",
-  status    : "Open to internships & work",
+### About
 
-  building  : [
-    "Backend engines",
-    "Distributed systems",
-    "Pixel-perfect frontends",
-  ],
-
-  learning  : "Node.js · Express · React · Vite",
-  principle : "Zero compromise on performance.",
+```ts
+const denys = {
+  alias    : "Evely",
+  location : "Solihull, UK → Remote",
+  focus    : "Backend & distributed systems",
+  stack    : ["Node.js","React","Rust","Python","C/C++"],
+  tools    : ["Docker","Linux","WebStorm","Vite","Twilio"],
+  learning : "Express · REST · clean architecture",
+  goal     : "Open to internships & junior roles",
+  website  : "https://evel.one",
 };
 ```
 
-</td>
-<td width="45%" valign="middle" align="center">
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ziuziuk-Denys&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=888888&langs_count=6" width="100%" />
-
-</td>
-</tr>
-</table>
-
-<br/>
+<br clear="right"/>
 
 ---
 
 <br/>
 
-## ⚡ GitHub Stats
+### Stats
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=Ziuziuk-Denys&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=888888&icon_color=cccccc&ring_color=cccccc&include_all_commits=true&count_private=true&hide=prs,issues" height="170" />
-&nbsp;&nbsp;
-<img src="https://streak-stats.demolab.com?user=Ziuziuk-Denys&theme=github-dark-blue&hide_border=true&background=0d1117&stroke=1c2128&ring=888888&fire=cccccc&currStreakLabel=ffffff&sideLabels=888888&dates=555555&currStreakNum=ffffff&sideNums=cccccc" height="170" />
+<img height="180" src="https://github-readme-stats.vercel.app/api?username=Ziuziuk-Denys&show_icons=true&theme=dark&hide_border=true&bg_color=0d0d0d&title_color=ffffff&text_color=777777&icon_color=aaaaaa&ring_color=aaaaaa&count_private=true&include_all_commits=true"/>
+&nbsp;
+<img height="180" src="https://streak-stats.demolab.com?user=Ziuziuk-Denys&theme=dark&hide_border=true&background=0d0d0d&stroke=222&ring=aaaaaa&fire=ffffff&currStreakLabel=ffffff&sideLabels=777777&dates=444444&currStreakNum=ffffff&sideNums=aaaaaa"/>
+
+</div>
+
+<br/>
+
+### Profile summary
+
+<div align="center">
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Ziuziuk-Denys&theme=github_dark" width="100%"/>
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Ziuziuk-Denys&theme=github_dark" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Ziuziuk-Denys&theme=github_dark" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Ziuziuk-Denys&theme=github_dark" width="32%"/>
 
 </div>
 
@@ -80,12 +74,26 @@ const Denys = {
 
 <br/>
 
-## 🛠 Stack
+### Stack
 
 <div align="center">
 
-<!-- Bubble skill icons — far more visual than plain badges -->
-<img src="https://go-skill-icons.vercel.app/api/icons?i=nodejs,express,react,vite,typescript,python,rust,c,cpp,docker,linux,git,webstorm,github&theme=dark&perline=7" />
+[![Node.js](https://img.shields.io/badge/Node.js-0d0d0d?style=for-the-badge&logo=nodedotjs&logoColor=6cc24a)](https://nodejs.org)
+[![Express](https://img.shields.io/badge/Express-0d0d0d?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com)
+[![React](https://img.shields.io/badge/React-0d0d0d?style=for-the-badge&logo=react&logoColor=61dafb)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-0d0d0d?style=for-the-badge&logo=vite&logoColor=646cff)](https://vitejs.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-0d0d0d?style=for-the-badge&logo=typescript&logoColor=3178c6)](https://typescriptlang.org)
+
+[![Rust](https://img.shields.io/badge/Rust-0d0d0d?style=for-the-badge&logo=rust&logoColor=ce422b)](https://rust-lang.org)
+[![Python](https://img.shields.io/badge/Python-0d0d0d?style=for-the-badge&logo=python&logoColor=ffd43b)](https://python.org)
+[![C](https://img.shields.io/badge/C-0d0d0d?style=for-the-badge&logo=c&logoColor=white)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![C++](https://img.shields.io/badge/C++-0d0d0d?style=for-the-badge&logo=cplusplus&logoColor=00599c)](https://isocpp.org)
+
+[![Docker](https://img.shields.io/badge/Docker-0d0d0d?style=for-the-badge&logo=docker&logoColor=2496ed)](https://docker.com)
+[![Linux](https://img.shields.io/badge/Linux-0d0d0d?style=for-the-badge&logo=linux&logoColor=fcc624)](https://kernel.org)
+[![Git](https://img.shields.io/badge/Git-0d0d0d?style=for-the-badge&logo=git&logoColor=f05032)](https://git-scm.com)
+[![WebStorm](https://img.shields.io/badge/WebStorm-0d0d0d?style=for-the-badge&logo=webstorm&logoColor=white)](https://jetbrains.com/webstorm)
+[![Twilio](https://img.shields.io/badge/Twilio-0d0d0d?style=for-the-badge&logo=twilio&logoColor=f22f46)](https://twilio.com)
 
 </div>
 
@@ -95,45 +103,38 @@ const Denys = {
 
 <br/>
 
-## 📈 Activity
+### Activity
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Ziuziuk-Denys&bg_color=0d1117&color=666666&line=888888&point=ffffff&area=true&area_color=333333&hide_border=true&custom_title=contribution+graph" width="100%" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Ziuziuk-Denys&bg_color=0d0d0d&color=555555&line=777777&point=cccccc&area=true&area_color=222222&hide_border=true&custom_title=contribution+activity" width="100%"/>
 
 </div>
 
 <br/>
 
----
+### Contribution snake
 
-<br/>
-
-## 🏆 Trophies
+> **Setup required:** create `.github/workflows/snake.yml` (see below), run the action once, and this animates automatically every day.
 
 <div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=Ziuziuk-Denys&theme=onestar&no-frame=true&no-bg=true&column=7&margin-w=6" />
-
-</div>
-
-<br/>
-
----
-
-<br/>
-
-## 🐍 Contributions
-
-<div align="center">
-
-<!-- Snake eating your contributions — needs the GitHub Action setup (instructions below) -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake.svg" />
-  <img alt="contribution snake" src="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake.svg"/>
+  <img alt="github contribution snake" src="https://raw.githubusercontent.com/Ziuziuk-Denys/Ziuziuk-Denys/output/github-snake-dark.svg" width="100%"/>
 </picture>
+</div>
 
+<br/>
+
+---
+
+<br/>
+
+### Trophies
+
+<div align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=Ziuziuk-Denys&theme=onestar&no-frame=true&no-bg=true&column=7&margin-w=4&margin-h=4"/>
 </div>
 
 <br/>
@@ -143,11 +144,19 @@ const Denys = {
 <br/>
 
 <div align="center">
-<sub>designed with intention &nbsp;·&nbsp; <a href="https://evel.one">evel.one</a></sub>
+
+<a href="https://evel.one"><img src="https://img.shields.io/badge/evel.one-portfolio-111?style=for-the-badge&labelColor=111&color=111&logo=safari&logoColor=white"/></a>
+&nbsp;
+<a href="mailto:denys.ziuziuk.w@gmail.com"><img src="https://img.shields.io/badge/denys.ziuziuk.w@gmail.com-contact-111?style=for-the-badge&labelColor=111&color=111&logo=gmail&logoColor=white"/></a>
+
+<br/><br/>
+
+<sub><sup>designed with intention &nbsp;·&nbsp; <a href="https://evel.one">evel.one</a> &nbsp;·&nbsp; Solihull, UK</sup></sub>
+
 </div>
 
 <br/>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a0a,100:161616&height=80&section=footer" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:111111,100:000000&height=80&section=footer" width="100%"/>
 </div>
