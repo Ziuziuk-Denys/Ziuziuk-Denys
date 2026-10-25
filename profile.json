@@ -1,0 +1,327 @@
+{
+  "login": "Ziuziuk-Denys",
+  "hero": {
+    "eyebrow": "Full-stack developer · UK, remote",
+    "name": "Denys Ziuziuk",
+    "subtitle": "I build Telegram Mini Apps, bots and web apps that people open from a link and use straight away. One person from the database schema to the deploy.",
+    "chips": [
+      {
+        "icon": "status",
+        "label": "Open to freelance work"
+      },
+      {
+        "icon": "ms-schedule",
+        "label": "Replies the same day"
+      }
+    ]
+  },
+  "links": [
+    {
+      "icon": "ms-language",
+      "label": "evel.one",
+      "url": "https://evel.one"
+    },
+    {
+      "icon": "si-telegram",
+      "label": "Telegram",
+      "url": "https://t.me/eveluxy"
+    },
+    {
+      "icon": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/denys-ziuziuk"
+    },
+    {
+      "icon": "si-x",
+      "label": "X",
+      "url": "https://x.com/DenysZiuziuk"
+    },
+    {
+      "icon": "ms-mail",
+      "label": "Email",
+      "url": "mailto:denys.ziuziuk.w@gmail.com"
+    }
+  ],
+  "now": {
+    "title": "Right now",
+    "items": [
+      {
+        "icon": "ms-work",
+        "label": "Taking freelance work: Mini Apps, bots, websites and automation"
+      },
+      {
+        "icon": "ms-deployed_code",
+        "label": "At my day job: a proposal generator with an LLM writing layer and 170 tests"
+      },
+      {
+        "icon": "ms-code",
+        "label": "Python and TypeScript most days, Rust and C for systems work"
+      },
+      {
+        "icon": "si-fedora",
+        "label": "Daily driver: Fedora Linux"
+      }
+    ]
+  },
+  "sections": {
+    "shipped": {
+      "index": "01",
+      "title": "Shipped",
+      "note": "All live in Telegram. Client and commercial code stays private, so the cards open the products."
+    },
+    "building": {
+      "index": "02",
+      "title": "Building",
+      "note": "My own products and open source."
+    }
+  },
+  "featured": {
+    "id": "voice",
+    "eyebrow": "Telegram Mini App",
+    "title": "Anonymous voice chat",
+    "text": "Random matching by voice or text, voice rooms over WebRTC with noise suppression, voice games, friends and daily streaks.",
+    "facts": [
+      {
+        "value": "8",
+        "label": "people in one voice room"
+      },
+      {
+        "value": "5",
+        "label": "voice games"
+      }
+    ],
+    "stack": "React · TypeScript · FastAPI · PostgreSQL · Redis · WebRTC",
+    "cta": "Open in Telegram",
+    "url": "https://t.me/AnteikuAnonBot",
+    "screens": [
+      "voice-home",
+      "voice-room",
+      "voice-games"
+    ]
+  },
+  "pairs": [
+    [
+      {
+        "id": "anonka",
+        "eyebrow": "Bot and Mini App",
+        "title": "Anonka",
+        "text": "Anonymous questions through a personal link, separate links per platform, a story card and weekly stats.",
+        "stack": "Python · aiogram · FastAPI · PostgreSQL · React",
+        "url": "https://t.me/AnteikuAnonkaBot",
+        "screens": [
+          "anonka-link",
+          "anonka-story"
+        ]
+      },
+      {
+        "id": "checker",
+        "eyebrow": "Bot and Mini App",
+        "title": "File and link checker",
+        "text": "A verdict from 60+ antivirus engines plus ClamAV, file type, first-seen date and hashes. Works in groups, files are never stored.",
+        "stack": "Python · aiogram · FastAPI · VirusTotal · ClamAV",
+        "url": "https://t.me/AnteikuChekniBot",
+        "screens": [
+          "checker-clean",
+          "checker-danger"
+        ]
+      }
+    ],
+    [
+      {
+        "id": "kachni",
+        "eyebrow": "Mini App",
+        "title": "Music and video downloader",
+        "text": "One search across several music sources, an in-app player, and TikTok, Reels and Shorts by link. Subscriptions and an admin panel.",
+        "stack": "Python · aiogram · FastAPI · React · TypeScript",
+        "url": "https://t.me/KachniBot",
+        "screens": [
+          "kachni-home",
+          "kachni-player"
+        ]
+      },
+      {
+        "id": "evelone",
+        "eyebrow": "Website",
+        "title": "evel.one",
+        "text": "My own site in two languages, with light and dark themes designed separately. Services, pricing and terms on one page.",
+        "stack": "React · TypeScript · Vite · Tailwind · Motion",
+        "url": "https://evel.one",
+        "browser": "evelone"
+      }
+    ]
+  ],
+  "zvukpad": {
+    "eyebrow": "Windows app",
+    "status": "In development",
+    "title": "Zvukpad",
+    "text": "My own soundboard. Sounds go into voice chat through your microphone, with hotkeys, a sound editor and text to speech. The interface is done, the audio engine is next.",
+    "stack": "Tauri · React · TypeScript",
+    "screen": "zvukpad"
+  },
+  "inkey": {
+    "eyebrow": "Open source · Linux",
+    "title": "inkey",
+    "text": "An offline IBus engine that fixes text typed in the wrong layout. The Rust core sits behind a C ABI, and each word is scored against frequency data at the word boundary.",
+    "stack": "Rust · C · IBus · MIT licence",
+    "cta": "View the repository",
+    "url": "https://github.com/Ziuziuk-Denys/inkey",
+    "demo": [
+      {
+        "typed": "ghbdtn",
+        "fixed": "привет"
+      },
+      {
+        "typed": "rfr",
+        "fixed": "как"
+      },
+      {
+        "typed": "ltkf",
+        "fixed": "дела"
+      }
+    ]
+  },
+  "stack": {
+    "title": "Stack",
+    "groups": [
+      {
+        "title": "Frontend",
+        "items": [
+          [
+            "si-typescript",
+            "TypeScript"
+          ],
+          [
+            "si-react",
+            "React"
+          ],
+          [
+            "si-nextdotjs",
+            "Next.js"
+          ]
+        ]
+      },
+      {
+        "title": "Backend",
+        "items": [
+          [
+            "si-python",
+            "Python"
+          ],
+          [
+            "si-fastapi",
+            "FastAPI"
+          ],
+          [
+            "si-telegram",
+            "aiogram"
+          ],
+          [
+            "si-nodedotjs",
+            "Node.js"
+          ]
+        ]
+      },
+      {
+        "title": "Data",
+        "items": [
+          [
+            "si-postgresql",
+            "PostgreSQL"
+          ],
+          [
+            "si-redis",
+            "Redis"
+          ],
+          [
+            "si-supabase",
+            "Supabase"
+          ]
+        ]
+      },
+      {
+        "title": "Infra",
+        "items": [
+          [
+            "si-docker",
+            "Docker"
+          ],
+          [
+            "si-caddy",
+            "Caddy"
+          ],
+          [
+            "si-nginx",
+            "Nginx"
+          ],
+          [
+            "si-cloudflare",
+            "Cloudflare"
+          ],
+          [
+            "si-linux",
+            "Linux"
+          ]
+        ]
+      },
+      {
+        "title": "Desktop",
+        "items": [
+          [
+            "si-tauri",
+            "Tauri"
+          ],
+          [
+            "si-electron",
+            "Electron"
+          ],
+          [
+            "si-rust",
+            "Rust"
+          ],
+          [
+            "si-c",
+            "C"
+          ]
+        ]
+      },
+      {
+        "title": "Realtime, AI",
+        "items": [
+          [
+            "si-webrtc",
+            "WebRTC"
+          ],
+          [
+            "ms-bolt",
+            "LLM APIs"
+          ],
+          [
+            "si-modelcontextprotocol",
+            "MCP servers"
+          ]
+        ]
+      }
+    ]
+  },
+  "activity": {
+    "title": "Activity",
+    "updated": "Updated hourly",
+    "contributions": "contributions in the last year",
+    "current": "Current streak",
+    "active": "Active days",
+    "longest": "Longest streak",
+    "days": "days",
+    "weeks": 21
+  },
+  "working": {
+    "title": "Working together",
+    "text": "Remote, async, in writing. Open to contract, freelance and part-time work.",
+    "steps": [
+      "Send the task, the deadline and the budget",
+      "Get questions or a plan and a fixed quote the same day",
+      "Get the code, the access and a short handover note"
+    ],
+    "button": "denys.ziuziuk.w@gmail.com",
+    "url": "mailto:denys.ziuziuk.w@gmail.com"
+  }
+}

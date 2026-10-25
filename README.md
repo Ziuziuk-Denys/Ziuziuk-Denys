@@ -1,59 +1,31 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.png">
-  <img src="assets/header-light.png" alt="Denys Ziuziuk. Telegram Mini Apps, bots, web apps and LLM tooling, from the database to the deploy. Swansea, UK, remote only." width="100%">
-</picture>
+<div align="center">
 
-I build products people open from a link and use straight away: Telegram Mini Apps with real-time voice, bots that handle payments and files, web apps, and internal tools with an LLM in the loop. One person from schema to deploy, code and access handed over at the end.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Denys Ziuziuk. Full-stack developer · UK, remote. I build Telegram Mini Apps, bots and web apps that people open from a link and use straight away. One person from the database schema to the deploy."></picture>
 
-[evel.one](https://evel.one) · [LinkedIn](https://www.linkedin.com/in/denys-ziuziuk) · [Telegram](https://t.me/eveluxy) · denys.ziuziuk.w@gmail.com
+<a href="https://evel.one"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-0-dark.svg"><img src="assets/link-0-light.svg" width="17.67%" alt="evel.one"></picture></a><a href="https://t.me/eveluxy"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-1-dark.svg"><img src="assets/link-1-light.svg" width="18.55%" alt="Telegram"></picture></a><a href="https://www.linkedin.com/in/denys-ziuziuk"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-2-dark.svg"><img src="assets/link-2-light.svg" width="17.91%" alt="LinkedIn"></picture></a><a href="https://x.com/DenysZiuziuk"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-3-dark.svg"><img src="assets/link-3-light.svg" width="11.73%" alt="X"></picture></a><a href="mailto:denys.ziuziuk.w@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-4-dark.svg"><img src="assets/link-4-light.svg" width="15.23%" alt="Email"></picture></a>
 
-## 01 · Shipped
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/now-dark.svg"><img src="assets/now-light.svg" width="100%" alt="Right now: Taking freelance work: Mini Apps, bots, websites and automation; At my day job: a proposal generator with an LLM writing layer and 170 tests; Python and TypeScript most days, Rust and C for systems work; Daily driver: Fedora Linux"></picture>
 
-All of these are live. Code for client and commercial work stays private, so the links go to the products themselves.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-shipped-dark.svg"><img src="assets/section-shipped-light.svg" width="100%" alt="Shipped. All live in Telegram. Client and commercial code stays private, so the cards open the products."></picture>
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="https://t.me/AnteikuAnonBot"><img src="assets/voice-chat.png" alt="Anonymous voice chat: matching screen, a voice room and the rating screen"></a>
-      <br><b>Anonymous voice chat</b> · Telegram Mini App
-      <br>Random matching, voice rooms for up to 8 people over WebRTC with noise suppression, five voice games, friends and streaks.
-      <br><sub>React · TypeScript · FastAPI · PostgreSQL · Redis · WebRTC</sub>
-    </td>
-    <td width="50%" valign="top">
-      <a href="https://t.me/AnteikuAnonkaBot"><img src="assets/anonka.png" alt="Anonka: personal link screen and weekly stats"></a>
-      <br><b>Anonka</b> · bot and Mini App
-      <br>Anonymous questions through a personal link, separate links per platform, a story card and weekly stats.
-      <br><sub>Python · aiogram · FastAPI · PostgreSQL · React</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="https://t.me/AnteikuChekniBot"><img src="assets/file-checker.png" alt="File checker: a clean report and the check history"></a>
-      <br><b>File and link checker</b> · bot and Mini App
-      <br>A verdict from 60+ antivirus engines plus ClamAV, file type, first-seen date and hashes. Works in groups, files are never stored.
-      <br><sub>Python · aiogram · FastAPI · VirusTotal · ClamAV</sub>
-    </td>
-    <td width="50%" valign="top">
-      <a href="https://t.me/KachniBot"><img src="assets/downloader.png" alt="Downloader: multi-source search and the in-app player"></a>
-      <br><b>Music and video downloader</b> · Mini App
-      <br>One search across several music sources, an in-app player, and TikTok, Reels and Shorts by link. Subscriptions and an admin panel.
-      <br><sub>Python · aiogram · FastAPI · React · TypeScript</sub>
-    </td>
-  </tr>
-</table>
+<a href="https://t.me/AnteikuAnonBot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-voice-dark.svg"><img src="assets/project-voice-light.svg" width="100%" alt="Anonymous voice chat: Random matching by voice or text, voice rooms over WebRTC with noise suppression, voice games, friends and daily streaks."></picture></a>
 
-At **NetSapiens** I build internal tools for the EMEA UCaaS business, including a proposal generator that turns a pricing matrix and a short brief into a branded Word proposal: a deterministic pricing core, a docx template layer and an LLM layer for the narrative, covered by 170 tests.
+<a href="https://t.me/AnteikuAnonkaBot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-anonka-dark.svg"><img src="assets/project-anonka-light.svg" width="49.9%" alt="Anonka: Anonymous questions through a personal link, separate links per platform, a story card and weekly stats."></picture></a><a href="https://t.me/AnteikuChekniBot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-checker-dark.svg"><img src="assets/project-checker-light.svg" width="49.9%" alt="File and link checker: A verdict from 60+ antivirus engines plus ClamAV, file type, first-seen date and hashes. Works in groups, files are never stored."></picture></a>
 
-## 02 · Open source
+<a href="https://t.me/KachniBot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-kachni-dark.svg"><img src="assets/project-kachni-light.svg" width="49.9%" alt="Music and video downloader: One search across several music sources, an in-app player, and TikTok, Reels and Shorts by link. Subscriptions and an admin panel."></picture></a><a href="https://evel.one"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-evelone-dark.svg"><img src="assets/project-evelone-light.svg" width="49.9%" alt="evel.one: My own site in two languages, with light and dark themes designed separately. Services, pricing and terms on one page."></picture></a>
 
-**[inkey](https://github.com/Ziuziuk-Denys/inkey)** is an offline IBus engine for Linux that fixes text typed in the wrong layout. Type `ghbdtn`, get `привет`. The Rust core sits behind a C ABI, the engine is written in C, and words are scored against frequency data at each word boundary.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-building-dark.svg"><img src="assets/section-building-light.svg" width="100%" alt="Building. My own products and open source."></picture>
 
-## 03 · Stack
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-zvukpad-dark.svg"><img src="assets/project-zvukpad-light.svg" width="100%" alt="Zvukpad (in development): My own soundboard. Sounds go into voice chat through your microphone, with hotkeys, a sound editor and text to speech. The interface is done, the audio engine is next."></picture>
 
-<a href="https://evel.one"><img src="https://skillicons.dev/icons?i=nodejs,py,ts,react,nextjs,fastapi,rust,cpp,postgres,redis,docker,cloudflare,linux&perline=13" alt="Node.js, Python, TypeScript, React, Next.js, FastAPI, Rust, C++, PostgreSQL, Redis, Docker, Cloudflare, Linux"></a>
+<a href="https://github.com/Ziuziuk-Denys/inkey"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-inkey-dark.svg"><img src="assets/project-inkey-light.svg" width="100%" alt="inkey: An offline IBus engine that fixes text typed in the wrong layout. The Rust core sits behind a C ABI, and each word is scored against frequency data at the word boundary."></picture></a>
 
-Also WebRTC, aiogram, discord.py, Tauri, Caddy and LLM APIs.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Stack: TypeScript, React, Next.js, Python, FastAPI, aiogram, Node.js, PostgreSQL, Redis, Supabase, Docker, Caddy, Nginx, Cloudflare, Linux, Tauri, Electron, Rust, C, WebRTC, LLM APIs, MCP servers"></picture>
 
-## 04 · Working together
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg"><img src="assets/activity-light.svg" width="100%" alt="GitHub activity: contributions in the last year and streaks"></picture>
 
-Remote only, async, in writing. Open to contract, freelance and part-time work. Send the task, the deadline and the budget, and I reply the same day with questions or a plan and a fixed quote.
+<a href="mailto:denys.ziuziuk.w@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/working-dark.svg"><img src="assets/working-light.svg" width="100%" alt="Working together. Remote, async, in writing. Open to contract, freelance and part-time work. Email denys.ziuziuk.w@gmail.com"></picture></a>
+
+<sub>The cards are SVG, generated by <a href="scripts/build.py">scripts/build.py</a> from <a href="profile.json">profile.json</a>. Activity refreshes every hour.</sub>
+
+</div>
