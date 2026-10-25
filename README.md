@@ -6,6 +6,8 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/now-dark.svg"><img src="assets/now-light.svg" width="100%" alt="Right now: Taking freelance work: Mini Apps, bots, websites and automation; At my day job: a proposal generator with an LLM writing layer and 170 tests; Python and TypeScript most days, Rust and C for systems work; Daily driver: Fedora Linux"></picture>
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/voice-dark.svg"><img src="assets/voice-light.svg" width="100%" alt=""></picture>
+
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-shipped-dark.svg"><img src="assets/section-shipped-light.svg" width="100%" alt="Shipped. All live in Telegram. Client and commercial code stays private, so the cards open the products."></picture>
 
 <a href="https://t.me/AnteikuAnonBot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-voice-dark.svg"><img src="assets/project-voice-light.svg" width="100%" alt="Anonymous voice chat: Random matching by voice or text, voice rooms over WebRTC with noise suppression, voice games, friends and daily streaks."></picture></a>

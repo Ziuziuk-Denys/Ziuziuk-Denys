@@ -47,7 +47,8 @@
     "items": [
       {
         "icon": "ms-work",
-        "label": "Taking freelance work: Mini Apps, bots, websites and automation"
+        "label": "Taking freelance work: Mini Apps, bots, websites and automation",
+        "live": "OPEN"
       },
       {
         "icon": "ms-deployed_code",
@@ -94,9 +95,18 @@
     "cta": "Open in Telegram",
     "url": "https://t.me/AnteikuAnonBot",
     "screens": [
-      "voice-home",
-      "voice-room",
-      "voice-games"
+      [
+        "voice-home",
+        "voice-friends"
+      ],
+      [
+        "voice-room",
+        "voice-tictactoe"
+      ],
+      [
+        "voice-games",
+        "voice-leaderboard"
+      ]
     ]
   },
   "pairs": [
@@ -109,8 +119,14 @@
         "stack": "Python · aiogram · FastAPI · PostgreSQL · React",
         "url": "https://t.me/AnteikuAnonkaBot",
         "screens": [
-          "anonka-link",
-          "anonka-story"
+          [
+            "anonka-link",
+            "anonka-settings"
+          ],
+          [
+            "anonka-story",
+            "anonka-bot"
+          ]
         ]
       },
       {
@@ -121,8 +137,14 @@
         "stack": "Python · aiogram · FastAPI · VirusTotal · ClamAV",
         "url": "https://t.me/AnteikuChekniBot",
         "screens": [
-          "checker-clean",
-          "checker-danger"
+          [
+            "checker-clean",
+            "checker-home"
+          ],
+          [
+            "checker-danger",
+            "checker-profile"
+          ]
         ]
       }
     ],
@@ -135,8 +157,14 @@
         "stack": "Python · aiogram · FastAPI · React · TypeScript",
         "url": "https://t.me/KachniBot",
         "screens": [
-          "kachni-home",
-          "kachni-player"
+          [
+            "kachni-home",
+            "kachni-saved"
+          ],
+          [
+            "kachni-player",
+            "kachni-premium"
+          ]
         ]
       },
       {

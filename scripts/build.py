@@ -9,6 +9,7 @@ is set, otherwise from the cached assets/src/activity.json.
 import base64
 import datetime as dt
 import json
+import math
 import os
 import urllib.request
 from pathlib import Path
@@ -21,12 +22,14 @@ OUT = ROOT / "assets"
 PROFILE = json.loads((ROOT / "profile.json").read_text())
 METRICS = json.loads((SRC / "metrics.json").read_text())
 ICONS = json.loads((SRC / "icons.json").read_text())
+SIGNATURE = json.loads((SRC / "signature.json").read_text())
 FONTS = {name: base64.b64encode((SRC / f"{name}.woff2").read_bytes()).decode() for name in ("sans", "mono")}
 
 WIDTH = 840
 PAIR_WIDTH = 412
 RADIUS = 28
 EASE = "cubic-bezier(.2,.7,.2,1)"
+SPRING = "cubic-bezier(.34,1.56,.64,1)"
 
 THEMES = {
     "light": {
@@ -44,7 +47,7 @@ THEMES = {
         "bezelEdge": "#1d1d1f",
         "heat": ["#e3e3e8", "#b5d3f5", "#7ab2ee", "#3a8de6", "#0071e3"],
         "shadow": 0.16,
-        "glow": 0.10,
+        "glow": 0.17,
     },
     "dark": {
         "card": "#1c1c1e",
@@ -157,23 +160,65 @@ def rise(content, delay, distance=""):
     return f'<g class="r{variant}" style="animation-delay:{delay:.2f}s">{content}</g>'
 
 
-def phone(x, y, width, screen, theme, palette, clip_id, card_height):
-    """A phone that runs past the bottom edge of the card, so only the top of the screen shows."""
+def spring(content, delay):
+    return f'<g class="s" style="animation-delay:{delay:.2f}s">{content}</g>'
+
+
+def odometer(x, y, value, size, fill, delay, clip_id, weight=700, tracking=-0.04):
+    """Digits roll up into place like a mechanical counter. Without animation the final value shows."""
+    line = size * 1.2
+    parts = [f'<clipPath id="{clip_id}"><rect x="{x - 4:.1f}" y="{y - size:.1f}" width="{text_width(value, size, weight, tracking=tracking) + 12:.1f}" height="{size * 1.25:.1f}"/></clipPath>']
+    parts.append(f'<g clip-path="url(#{clip_id})">')
+    cursor = x
+    for index, char in enumerate(value):
+        width = text_width(char, size, weight, tracking=tracking)
+        if char.isdigit():
+            target = 10 + int(char)
+            column = "".join(text(cursor, y + row * line, str(row % 10), size, fill, weight, tracking=tracking) for row in range(target + 1))
+            parts.append(
+                f'<g class="odo" transform="translate(0 {-target * line:.1f})" style="animation-delay:{delay + index * 0.12:.2f}s">{column}</g>'
+            )
+        else:
+            parts.append(text(cursor, y, char, size, fill, weight, tracking=tracking))
+        cursor += width
+    parts.append("</g>")
+    return "".join(parts)
+
+
+def phone(x, y, width, screens, theme, palette, clip_id, card_height, phase=0.0, period=9.0):
+    """A phone that runs past the bottom edge of the card. Extra screens fade in on a loop, like the app in use."""
+    if isinstance(screens, str):
+        screens = [screens]
     bezel = 6
     inner = width - bezel * 2
-    screen_height = inner * image_ratio(screen)
-    if y + bezel + screen_height < card_height:
-        raise ValueError(f"{screen}: screenshot ends {card_height - y - bezel - screen_height:.0f}px above the card edge")
-    height = card_height - y + 60
     radius = 30
+    images = []
+    for index, screen in enumerate(screens):
+        screen_height = inner * image_ratio(screen)
+        if y + bezel + screen_height < card_height:
+            raise ValueError(f"{screen}: screenshot ends {card_height - y - bezel - screen_height:.0f}px above the card edge")
+        cycle = ""
+        if index:
+            start = phase + (index - 1) * period
+            cycle = f' class="cyc" opacity="0" style="animation:cycle {period * (len(screens) - 1):.1f}s ease-in-out {start:.2f}s infinite"'
+        images.append(
+            f'<image{cycle} href="{image_data(screen, theme)}" x="{x + bezel:.1f}" y="{y + bezel:.1f}" width="{inner:.1f}" '
+            f'height="{screen_height:.1f}" preserveAspectRatio="xMidYMin slice"/>'
+        )
+    height = card_height - y + 60
     return (
         f'<clipPath id="{clip_id}"><rect x="{x + bezel:.1f}" y="{y + bezel:.1f}" width="{inner:.1f}" '
-        f'height="{screen_height + 60:.1f}" rx="{radius - bezel}"/></clipPath>'
+        f'height="{height:.1f}" rx="{radius - bezel}"/></clipPath>'
         f'<g filter="url(#shadow)"><rect x="{x:.1f}" y="{y:.1f}" width="{width:.1f}" height="{height:.1f}" rx="{radius}" '
         f'fill="{palette["bezel"]}" stroke="{palette["bezelEdge"]}" stroke-width="1"/></g>'
-        f'<image href="{image_data(screen, theme)}" x="{x + bezel:.1f}" y="{y + bezel:.1f}" width="{inner:.1f}" '
-        f'height="{screen_height:.1f}" clip-path="url(#{clip_id})" preserveAspectRatio="xMidYMin slice"/>'
+        f'<g clip-path="url(#{clip_id})"><rect x="{x + bezel:.1f}" y="{y + bezel:.1f}" width="{inner:.1f}" height="{height:.1f}" fill="{palette["card"]}"/>'
+        + "".join(images)
+        + "</g>"
     )
+
+
+def floating(content, delay):
+    return f'<g class="float" style="animation-delay:{delay:.2f}s">{content}</g>'
 
 
 def arrow_badge(x, y, palette):
@@ -195,16 +240,25 @@ def document(width, height, body, theme, title, extra_css="", card=True, gutter=
         f".r{{animation:rise 1s {EASE} both}}"
         f".r2{{animation-name:rise2;animation-duration:1.2s}}"
         f".p{{animation:pop .9s {EASE} both;transform-box:fill-box;transform-origin:center}}"
+        f".s{{animation:spring .8s {SPRING} both;transform-box:fill-box;transform-origin:center}}"
+        ".float{animation:float 5s ease-in-out infinite alternate}"
+        ".ping{transform-box:fill-box;transform-origin:center;animation:ping 2s ease-out infinite}"
+        f".odo{{animation:roll 1.8s cubic-bezier(.16,1,.3,1) both}}"
         "@keyframes rise{from{opacity:0;transform:translateY(14px)}}"
         "@keyframes rise2{from{opacity:0;transform:translateY(48px)}}"
         "@keyframes pop{from{opacity:0;transform:scale(.86)}}"
+        "@keyframes spring{from{opacity:0;transform:scale(.6)}}"
+        "@keyframes float{to{transform:translateY(-9px)}}"
+        "@keyframes ping{from{opacity:.6;transform:scale(1)}to{opacity:0;transform:scale(2.8)}}"
+        "@keyframes roll{from{transform:translateY(0)}}"
+        "@keyframes cycle{0%,44%{opacity:0;transform:translateY(14px)}52%,94%{opacity:1;transform:none}100%{opacity:0;transform:none}}"
         + extra_css
         + "@media (prefers-reduced-motion:reduce){*{animation:none!important}}"
     )
     fonts = "".join(
         f'@font-face{{font-family:{family};src:url(data:font/woff2;base64,{FONTS[name]}) format("woff2");font-weight:100 900}}'
         for name, family in (("sans", "S"), ("mono", "M"))
-        if name == "sans" or 'class="m"' in body
+        if (name == "sans" and "<text" in body) or 'class="m"' in body
     )
     css = fonts + css
     outer = width + gutter
@@ -239,19 +293,47 @@ def render_hero(theme):
         '<rect x="44" y="52" width="184" height="184" rx="52" fill="url(#avatarLight)"/>'
         f'{text(monogram_x, 175, "D", 88, "#ffffff", 800, tracking=-0.04)}'
         f'{text(monogram_x + text_width("D", 88, 800, tracking=-0.04), 175, "Z", 88, "#c9e4ff", 800, tracking=-0.04)}'
+        # A glass highlight sweeps across the tile every few seconds
+        '<clipPath id="tile"><rect x="44" y="52" width="184" height="184" rx="52"/></clipPath>'
+        '<linearGradient id="sheenFill" x1="0" y1="0" x2="1" y2="0">'
+        '<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".42"/>'
+        '<stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>'
+        '<g clip-path="url(#tile)"><path class="sheen" d="M-40 20 L20 20 L-60 280 L-120 280 Z" fill="url(#sheenFill)"/></g>'
         "</g>"
     )
 
-    glow = (
-        '<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">'
-        f'<stop offset="0" stop-color="{palette["accent"]}" stop-opacity="{palette["glow"]}"/>'
-        f'<stop offset="1" stop-color="{palette["accent"]}" stop-opacity="0"/></radialGradient>'
-        '<g class="drift"><circle cx="760" cy="40" r="260" fill="url(#glow)"/></g>'
-    )
+    # Three soft light pools drift on different periods, so the motion never repeats exactly
+    pools = [
+        (palette["accent"], 720, 30, 250, "a1", 1.0),
+        ("#5ac8fa", 560, 300, 210, "a2", 0.8),
+        ("#9ec9ff", 840, 260, 190, "a3", 0.7),
+    ]
+    glow = ""
+    for color, cx, cy, radius, name, strength in pools:
+        glow += (
+            f'<radialGradient id="{name}g" cx=".5" cy=".5" r=".5">'
+            f'<stop offset="0" stop-color="{color}" stop-opacity="{palette["glow"] * strength:.3f}"/>'
+            f'<stop offset="1" stop-color="{color}" stop-opacity="0"/></radialGradient>'
+            f'<g class="{name}"><circle cx="{cx}" cy="{cy}" r="{radius}" fill="url(#{name}g)"/></g>'
+        )
 
-    parts = [glow, avatar]
+    rings = "".join(
+        f'<rect class="speak" style="animation-delay:{1.2 + index * 1.4:.1f}s" x="44" y="52" width="184" height="184" rx="52" '
+        f'stroke="{palette["accent"]}" stroke-width="2"/>'
+        for index in range(2)
+    )
+    parts = [glow, rings, avatar]
     parts.append(rise(eyebrow(text_x, 84, hero["eyebrow"], palette["muted"]), 0.12))
-    parts.append(rise(text(text_x, 140, hero["name"], 54, palette["text"], 700, tracking=-0.035), 0.2))
+    # The name comes in letter by letter while the weight grows from light to bold
+    letter_x = text_x
+    for index, char in enumerate(hero["name"]):
+        if char != " ":
+            parts.append(
+                f'<g class="ltr" style="animation-delay:{0.18 + index * 0.045:.3f}s">'
+                + text(letter_x, 140, char, 54, palette["text"], 700, tracking=-0.035)
+                + "</g>"
+            )
+        letter_x += text_width(char, 54, 700, tracking=-0.035)
     subtitle, last_y = paragraph(text_x, 178, hero["subtitle"], 18, text_width_max, 26, palette["muted"])
     parts.append(rise(subtitle, 0.28))
 
@@ -276,16 +358,23 @@ def render_hero(theme):
             + mark
             + text(chip_x + 38, chip_y + 22, chip["label"], 14, palette["text"], 500)
         )
-        chips.append(rise(chip_svg, 0.4 + index * 0.08))
+        chips.append(spring(chip_svg, 0.75 + index * 0.1))
         chip_x += width + 8
     parts.extend(chips)
 
     height = round(max(chip_y + 34 + 44, 288))
     extra_css = (
-        "@keyframes ping{from{opacity:.6;transform:scale(1)}to{opacity:0;transform:scale(2.8)}}"
-        ".ping{transform-box:fill-box;transform-origin:center;animation:ping 2s ease-out infinite}"
-        "@keyframes drift{50%{transform:translate(-30px,18px)}}"
-        ".drift{animation:drift 14s ease-in-out infinite}"
+        f".ltr{{animation:rise 1s {EASE} both}}"
+        f".ltr text{{font-weight:700;animation:wght 1.8s {EASE} both;animation-delay:inherit}}"
+        "@keyframes wght{from{font-weight:200}}"
+        ".sheen{animation:sheen 6s cubic-bezier(.4,0,.2,1) 1.4s infinite}"
+        ".speak{opacity:0;transform-box:fill-box;transform-origin:center;animation:speak 2.8s cubic-bezier(.2,.7,.2,1) infinite}"
+        "@keyframes speak{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.22)}}"
+        "@keyframes sheen{0%{transform:translateX(0)}28%,100%{transform:translateX(380px)}}"
+        ".a1{animation:a1 17s ease-in-out infinite}.a2{animation:a2 23s ease-in-out infinite}.a3{animation:a3 29s ease-in-out infinite}"
+        "@keyframes a1{33%{transform:translate(-140px,70px)}66%{transform:translate(-40px,120px)}}"
+        "@keyframes a2{50%{transform:translate(180px,-120px)}}"
+        "@keyframes a3{40%{transform:translate(-220px,-60px)}80%{transform:translate(-90px,-150px)}}"
     )
     title = f'{hero["name"]}. {hero["subtitle"]}'
     return document(WIDTH, height, "".join(parts), theme, title, extra_css)
@@ -307,7 +396,7 @@ def render_link(link, index, theme):
         + text(label_x, 29.5, link["label"], 15, palette["text"], 500)
         + icon("ms-north_east", arrow_x, 17, 14, palette["faint"])
     )
-    return document(round(width), 48, rise(body, 0.35 + index * 0.06), theme, link["label"], card=False)
+    return document(round(width), 48, spring(body, 0.5 + index * 0.08), theme, link["label"], card=False)
 
 
 def render_now(theme):
@@ -322,9 +411,49 @@ def render_now(theme):
             + icon(item["icon"], 43, y + 15, 18, palette["text"])
             + text(80, y + 29.5, item["label"], 15.5, palette["text"], 500)
         )
+        if item.get("live"):
+            label_width = text_width(item["live"], 12, 600, "mono", 0.06)
+            row += (
+                f'<circle cx="{WIDTH - 52 - label_width - 14}" cy="{y + 24}" r="4" fill="{palette["green"]}"/>'
+                f'<circle class="ping" cx="{WIDTH - 52 - label_width - 14}" cy="{y + 24}" r="4" fill="{palette["green"]}"/>'
+                + text(WIDTH - 52, y + 28.5, item["live"], 12, palette["green"], 600, "mono", 0.06, anchor="end")
+            )
         parts.append(rise(row, 0.12 + index * 0.07))
         y += 56
     return document(WIDTH, y + 18, "".join(parts), theme, now["title"])
+
+
+def render_voice(theme):
+    """A live voice level across the page: the products are about voice, so this is the divider."""
+    palette = THEMES[theme]
+    height = 72
+    bars = 88
+    pitch = WIDTH / bars
+    parts = [
+        f'<linearGradient id="fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="{WIDTH}" y2="0">'
+        f'<stop offset="0" stop-color="{palette["accent"]}" stop-opacity="0"/>'
+        f'<stop offset=".18" stop-color="{palette["accent"]}" stop-opacity=".9"/>'
+        f'<stop offset=".5" stop-color="#5ac8fa"/>'
+        f'<stop offset=".82" stop-color="{palette["accent"]}" stop-opacity=".9"/>'
+        f'<stop offset="1" stop-color="{palette["accent"]}" stop-opacity="0"/></linearGradient>'
+    ]
+    for index in range(bars):
+        position = index / (bars - 1)
+        envelope = math.sin(math.pi * position) ** 0.7
+        texture = 0.55 + 0.45 * math.sin(index * 0.9) * math.cos(index * 0.37)
+        bar_height = max(4, 6 + 52 * envelope * abs(texture))
+        x = index * pitch + (pitch - 3) / 2
+        delay = -((index * 0.137 + math.sin(index) * 0.4) % 1.6)
+        duration = 1.1 + (index % 5) * 0.12
+        parts.append(
+            f'<rect class="eq" style="animation-duration:{duration:.2f}s;animation-delay:{delay:.2f}s" x="{x:.1f}" '
+            f'y="{(height - bar_height) / 2:.1f}" width="3" height="{bar_height:.1f}" rx="1.5" fill="url(#fade)"/>'
+        )
+    extra_css = (
+        ".eq{transform-box:fill-box;transform-origin:center;animation:eq 1.4s ease-in-out infinite alternate}"
+        "@keyframes eq{from{transform:scaleY(.18)}to{transform:scaleY(1)}}"
+    )
+    return document(WIDTH, height, "".join(parts), theme, "", extra_css, card=False)
 
 
 def render_section(section, theme):
@@ -365,7 +494,7 @@ def render_featured(theme):
     fact_x = 540
     for index, fact in enumerate(project["facts"]):
         x = fact_x + index * 136
-        fact_svg = text(x, 112, fact["value"], 56, palette["text"], 700, tracking=-0.04)
+        fact_svg = odometer(x, 112, fact["value"], 56, palette["text"], 0.5 + index * 0.15, f"fact{index}")
         label, _ = paragraph(x, 140, fact["label"], 14, 116, 19, palette["muted"])
         parts.append(rise(fact_svg + label, 0.2 + index * 0.06))
     cta_y = 212
@@ -382,9 +511,10 @@ def render_featured(theme):
     top = max(bottom, cta_y) + 44
     offsets = [40, 0, 40]
     height = round(top + 320)
-    for index, screen in enumerate(project["screens"]):
+    for index, screens in enumerate(project["screens"]):
         x = start_x + index * (phone_width + gap)
-        parts.append(rise(phone(x, top + offsets[index], phone_width, screen, theme, palette, f"screen{index}", height), 0.3 + index * 0.1, "2"))
+        device = phone(x, top + offsets[index], phone_width, screens, theme, palette, f"screen{index}", height, phase=2.2 + index * 1.4)
+        parts.append(rise(floating(device, -index * 1.7), 0.3 + index * 0.1, "2"))
     title = f'{project["title"]}. {project["text"]}'
     return document(WIDTH, height, "".join(parts), theme, title)
 
@@ -414,14 +544,15 @@ def render_pair_card(project, theme, height, side):
         phone_width = 170
         gap = 16
         start_x = (PAIR_WIDTH - (phone_width * 2 + gap)) / 2
-        for index, screen in enumerate(project["screens"]):
+        for index, screens in enumerate(project["screens"]):
             x = start_x + index * (phone_width + gap)
-            parts.append(rise(phone(x, top + index * 28, phone_width, screen, theme, palette, f"screen{index}", height), 0.28 + index * 0.1, "2"))
+            device = phone(x, top + index * 28, phone_width, screens, theme, palette, f"screen{index}", height, phase=3.0 + side * 2.1 + index * 1.3)
+            parts.append(rise(floating(device, -index * 1.9 - side), 0.28 + index * 0.1, "2"))
     else:
         window_width = 560
         if top + 6 + 30 + window_width * image_ratio(project["browser"]) < height + 20:
             raise ValueError(f'{project["id"]}: browser window does not reach the card edge')
-        parts.append(rise(browser(28, top + 6, window_width, project["browser"], theme, palette), 0.28, "2"))
+        parts.append(rise(floating(browser(28, top + 6, window_width, project["browser"], theme, palette), -2.4), 0.28, "2"))
     if height - top < 200:
         raise ValueError(f'{project["id"]}: only {height - top:.0f}px left for screenshots')
     title = f'{project["title"]}. {project["text"]}'
@@ -455,7 +586,7 @@ def render_zvukpad(theme):
         f'<image href="{image_data(project["screen"], theme)}" x="{window_x}" y="{window_y}" width="{window_width}" '
         f'height="{window_height:.1f}" clip-path="url(#window)"/>'
     )
-    parts.append(rise(window, 0.3, "2"))
+    parts.append(rise(floating(window, -1.2), 0.3, "2"))
     height = max(round(status_y + 30 + 44), 400)
     extra_css = (
         "@keyframes ping{from{opacity:.6;transform:scale(1)}to{opacity:0;transform:scale(2.8)}}"
@@ -539,12 +670,15 @@ def render_inkey(theme):
             space_times.append(start)
         start = end
 
-    key_frames = ["0%{fill:var(--k)}"]
+    key_frames = ["0%{transform:none}"]
+    fill_frames = ["0%{fill:var(--k)}"]
     for moment in space_times:
         on = moment / total * 100
-        key_frames.append(f"{on - 0.4:.2f}%{{fill:var(--k)}}{on:.2f}%{{fill:{palette['accent']}}}{on + 4:.2f}%{{fill:var(--k)}}")
+        key_frames.append(f"{on - 0.4:.2f}%{{transform:none}}{on:.2f}%{{transform:translateY(3px)}}{on + 4:.2f}%{{transform:none}}")
+        fill_frames.append(f"{on - 0.4:.2f}%{{fill:var(--k)}}{on:.2f}%{{fill:{palette['accent']}}}{on + 4:.2f}%{{fill:var(--k)}}")
     css.append(f"@keyframes key{{{''.join(key_frames)}}}")
-    css.append(f".key{{--k:{palette['card']};fill:var(--k);animation:key {total:.2f}s linear infinite}}")
+    css.append(f".key{{--k:{palette['card']};animation:key {total:.2f}s linear infinite}}.key rect{{fill:var(--k);animation:inherit;animation-name:keyfill}}")
+    css.append(f"@keyframes keyfill{{{''.join(fill_frames)}}}")
     css.append("@keyframes blink{50%{opacity:0}}.caret{animation:blink 1s step-end infinite}")
     css.append(f"@media (prefers-reduced-motion:reduce){{[class^=f]{{opacity:0}}.f{len(frames) - 1}{{opacity:1}}}}")
 
@@ -557,8 +691,9 @@ def render_inkey(theme):
         + text(panel_x + panel_width - 24, panel_y + 36, "EN layout → RU word", 11, palette["faint"], 500, "mono", 0.02, anchor="end")
         + f'<rect x="{field_x}" y="{field_y}" width="{field_width}" height="54" rx="14" fill="{palette["card"]}" stroke="{palette["line"]}"/>'
         + "".join(frame_svgs)
-        + f'<rect class="key" x="{key_x:.1f}" y="{key_y}" width="{key_width}" height="40" rx="10" stroke="{palette["line"]}"/>'
+        + f'<g class="key"><rect x="{key_x:.1f}" y="{key_y}" width="{key_width}" height="40" rx="10" stroke="{palette["line"]}"/>'
         + text(key_x + key_width / 2, key_y + 25, "space", 13, palette["muted"], 500, "mono", anchor="middle")
+        + "</g>"
         + text(panel_x + panel_width / 2, key_y + 68, "The word is checked when you press space", 13, palette["faint"], 400, anchor="middle")
     )
     parts.append(rise(panel, 0.2))
@@ -586,8 +721,8 @@ def render_stack(theme):
                 + icon(icon_name, x + 12, y + 9, 16, palette["text"])
                 + text(x + 36, y + 22, label, 14, palette["text"], 500)
             )
-            parts.append(rise(chip, delay))
-            delay += 0.025
+            parts.append(spring(chip, delay))
+            delay += 0.03
             x += width + 8
         y += 46
     return document(WIDTH, y + 22, "".join(parts), theme, "Stack: " + ", ".join(
@@ -664,7 +799,7 @@ def render_activity(theme, activity):
     parts = [
         rise(text(40, 60, copy["title"], 26, palette["text"], 700, tracking=-0.02), 0.05),
     ]
-    parts.append(rise(text(40, 138, f'{activity["total"]:,}', 60, palette["text"], 700, tracking=-0.04), 0.1))
+    parts.append(odometer(40, 138, f'{activity["total"]:,}', 60, palette["text"], 0.3, "total"))
     parts.append(rise(text(40, 166, copy["contributions"], 15, palette["muted"]), 0.14))
 
     active_days = sum(1 for day in days if day["count"] > 0)
@@ -676,7 +811,7 @@ def render_activity(theme, activity):
         number_width = text_width(str(value), 30, 700, tracking=-0.03)
         tile = (
             f'<rect x="{x}" y="196" width="160" height="84" rx="18" fill="{palette["tile"]}"/>'
-            + text(x + 18, 236, str(value), 30, palette["text"], 700, tracking=-0.03)
+            + odometer(x + 18, 236, str(value), 30, palette["text"], 0.6 + index * 0.2, f"tile{index}", tracking=-0.03)
             + text(x + 18 + number_width + 6, 236, unit, 14, palette["muted"], 500)
             + text(x + 18, 262, label, 13, palette["muted"])
         )
@@ -713,10 +848,16 @@ def render_activity(theme, activity):
             day = by_date.get(date.isoformat(), {"count": 0, "level": 0})
             fill = palette["heat"][day["level"]]
             delay = 0.2 + (week + weekday) * 0.018
+            # A slow diagonal wave passes over the grid after it has popped in
+            wave = 2 + (week + weekday) * 0.06
             cells.append(
-                f'<rect class="p" style="animation-delay:{delay:.2f}s" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="4" fill="{fill}">'
+                f'<rect class="cell" style="animation-delay:{delay:.2f}s,{wave:.2f}s" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="4" fill="{fill}">'
                 f'<title>{date.isoformat()}: {day["count"]}</title></rect>'
             )
+            if date == last_date:
+                cells.append(
+                    f'<rect class="ping" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="4" stroke="{palette["accent"]}" stroke-width="1.5"/>'
+                )
     parts.extend(month_labels)
     parts.extend(cells)
 
@@ -731,7 +872,11 @@ def render_activity(theme, activity):
 
     height = max(legend_y + cell + 40, 316)
     title = f'{activity["total"]} {copy["contributions"]}, {first_tile[0].lower()} {first_tile[1]}, longest streak {longest}'
-    return document(WIDTH, height, "".join(parts), theme, title)
+    extra_css = (
+        f".cell{{transform-box:fill-box;transform-origin:center;animation:spring .7s {SPRING} both,glint 7s ease-in-out infinite}}"
+        "@keyframes glint{0%,10%,100%{opacity:1}5%{opacity:.35}}"
+    )
+    return document(WIDTH, height, "".join(parts), theme, title, extra_css)
 
 
 def render_working(theme):
@@ -744,13 +889,26 @@ def render_working(theme):
     tile_y = last_y + 30
     tile_gap = 12
     tile_width = (WIDTH - 80 - tile_gap * 2) / 3
-    tile_height = 118
+    tile_height = 128
+    steps = len(copy["steps"])
+    period = 2.6 * steps + 1.2
+    segment_css = []
     for index, step in enumerate(copy["steps"]):
         x = 40 + index * (tile_width + tile_gap)
-        lines, _ = paragraph(x + 20, tile_y + 72, step, 15, tile_width - 40, 21, palette["text"], 500)
+        lines, _ = paragraph(x + 20, tile_y + 82, step, 15, tile_width - 40, 21, palette["text"], 500)
+        # Progress segments fill one after another, like stories, to show the order of the steps
+        start = index * 2.6 / period * 100
+        end = (index + 1) * 2.6 / period * 100
+        segment_css.append(
+            f"@keyframes seg{index}{{0%,{start:.1f}%{{transform:scaleX(0)}}{end:.1f}%,94%{{transform:scaleX(1)}}100%{{transform:scaleX(0)}}}}"
+            f".seg{index}{{transform-box:fill-box;transform-origin:left center;animation:seg{index} {period:.1f}s linear infinite}}"
+        )
+        segment_width = tile_width - 40
         tile = (
             f'<rect x="{x:.1f}" y="{tile_y:.1f}" width="{tile_width:.1f}" height="{tile_height}" rx="18" fill="{palette["tile"]}"/>'
-            + text(x + 20, tile_y + 40, f"0{index + 1}", 13, palette["accent"], 600, "mono", 0.06)
+            f'<rect x="{x + 20:.1f}" y="{tile_y + 20:.1f}" width="{segment_width:.1f}" height="3" rx="1.5" fill="{palette["line"]}"/>'
+            f'<rect class="seg{index}" x="{x + 20:.1f}" y="{tile_y + 20:.1f}" width="{segment_width:.1f}" height="3" rx="1.5" fill="{palette["accent"]}"/>'
+            + text(x + 20, tile_y + 52, f"0{index + 1}", 13, palette["accent"], 600, "mono", 0.06)
             + lines
         )
         parts.append(rise(tile, 0.16 + index * 0.08))
@@ -763,9 +921,44 @@ def render_working(theme):
         + text(84, button_y + 28.5, copy["button"], 15, palette["accentText"], 600)
     )
     parts.append(rise(button, 0.42))
+    signature, signature_css = render_signature(WIDTH - 48, button_y + 44, 64, palette["text"])
+    parts.append(signature)
     height = round(button_y + 46 + 40)
     title = f'{copy["title"]}. {copy["text"]} ' + " ".join(f"{index + 1}. {step}." for index, step in enumerate(copy["steps"]))
-    return document(WIDTH, height, "".join(parts), theme, title)
+    return document(WIDTH, height, "".join(parts), theme, title, "".join(segment_css) + signature_css)
+
+
+def render_signature(right, bottom, height, color):
+    """Handwritten "Denys" drawn stroke by stroke, then held, then redrawn, like a pen signing."""
+    left_x, top_y, right_x, bottom_y = SIGNATURE["box"]
+    scale = height / (bottom_y - top_y)
+    x = right - (right_x - left_x) * scale
+    y = bottom - height
+    total = sum(stroke["length"] for stroke in SIGNATURE["strokes"])
+    draw = 2.6
+    period = 11.0
+    paths = []
+    css = []
+    elapsed = 0.6
+    for index, stroke in enumerate(SIGNATURE["strokes"]):
+        duration = draw * stroke["length"] / total
+        start = elapsed / period * 100
+        end = (elapsed + duration) / period * 100
+        css.append(f"@keyframes pen{index}{{0%,{start:.2f}%{{stroke-dashoffset:1}}{end:.2f}%,100%{{stroke-dashoffset:0}}}}")
+        css.append(f".pen{index}{{animation:pen{index} {period}s linear infinite}}")
+        paths.append(
+            f'<path class="pen{index}" d="{stroke["d"]}" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="0" '
+            f'stroke="{color}" stroke-width="{2.2 / scale:.1f}" stroke-linecap="round" stroke-linejoin="round"/>'
+        )
+        elapsed += duration
+    css.append(f".signature{{animation:signature {period}s linear infinite}}")
+    css.append("@keyframes signature{0%,90%{opacity:1}97%,100%{opacity:0}}")
+    group = (
+        f'<g class="signature"><g transform="translate({x - left_x * scale:.1f} {y - top_y * scale:.1f}) scale({scale:.4f})">'
+        + "".join(paths)
+        + "</g></g>"
+    )
+    return group, "".join(css)
 
 
 # README
@@ -805,6 +998,7 @@ def render_readme():
         picture("hero", f'{hero["name"]}. {hero["eyebrow"]}. {hero["subtitle"]}'),
         links,
         picture("now", PROFILE["now"]["title"] + ": " + "; ".join(item["label"] for item in PROFILE["now"]["items"])),
+        picture("voice", ""),
         picture("section-shipped", f'{shipped["title"]}. {shipped["note"]}'),
         linked(featured["url"], picture("project-voice", f'{featured["title"]}: {featured["text"]}')),
         *pair_rows,
@@ -827,6 +1021,7 @@ def main():
         cards = {
             "hero": render_hero(theme),
             "now": render_now(theme),
+            "voice": render_voice(theme),
             "section-shipped": render_section(PROFILE["sections"]["shipped"], theme),
             "section-building": render_section(PROFILE["sections"]["building"], theme),
             "project-voice": render_featured(theme),
